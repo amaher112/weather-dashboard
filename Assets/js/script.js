@@ -1,27 +1,38 @@
 var APIKey = "6c8259ad3f096de657ba0edf2d1ec551";
-var city = document.getElementById('#city');
-var lat;
-var lon;
+var city = document.getElementById("#city");
+var lat = 39.1856597;
+var lon = -78.1633341;
 var geoCode =
-  "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=3&appid=" + APIKey;
+  "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
 var requestUrl =
-  "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" +  APIKey;
-
+  "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&units=imperial";
 
 function getWeather() {
-    // Store city input in local storage
-    // Add dayjs
-    
-    fetch(geoCode) 
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    })
-}
+  // Store city input in local storage
 
  
+}
+
+  // Function to get coordinates
+  fetch(geoCode)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    lat = data[0].lat;
+    lon = data[0].lon;
+    console.log(lat);
+    console.log(lon);
+  });
   
-    var submitBtn = document.getElementById('#submit');
-    submitBtn.addEventListener('click', getWeather)
+  // Function to get weather info
+  fetch(requestUrl)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
+
+var submitBtn = document.getElementById("#submit");
+submitBtn.addEventListener('click', getWeather)
+
+// Icon
+// console.log(`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
