@@ -12,19 +12,29 @@
   </head>
   <body>
     <header id="header" class="text-bg-info p-3">Weather Dashboard</header>
-    <aside>
-      <h1>Search for a City:</h1>
-      <input type="text" id="city" placeholder="Enter city" />
-      <!-- Enter placeholder -->
-      <button type="submit" id="submit" class="btn btn-primary">Search</button>
-    </aside>
+    <div class="container">
+      <div class="row">
+        <aside class="col">
+          <h1>Search for a City:</h1>
+          <input type="text" id="city" placeholder="Enter city" />
+          <button type="submit" id="submit" class="btn btn-primary">
+            Search
+          </button>
+        </aside>
+        <div class="col">Current Weather</div>
+      </div>
+    </div>
 
-  
-
-    <div class="card-group"></div>
-     
+    <div class="container">
+      <div class="row">
+        <aside class="col">
+          <button type="submit" id="past-city"></button>
+        </aside>
+      </div>
+    </div>
+    <div class="card-group col"></div>
     <!-- Search history -->
-    <!-- Add Weather info - five divs? -->
+
     <!-- A box at the top for today -->
 
     <script
