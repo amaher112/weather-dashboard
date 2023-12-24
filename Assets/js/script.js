@@ -23,8 +23,10 @@ function getWeather() {
       .then((currentWeatherData) => { 
         console.log(currentWeatherData)
         currentWeather.textContent = " ";
+        
+        // Creating elements for current weather data
         var city = document.createElement('h2');
-        city.textContent = cityInput;
+        city.textContent = currentWeatherData.name
         var currentDate = document.createElement('h2')
         currentDate.textContent = dayjs().format('MM/DD/YYYY');
         var currentIcon = document.createElement('img')
@@ -35,6 +37,8 @@ function getWeather() {
         currentWind.textContent = "Wind: " + currentWeatherData.wind.speed + " MPH"
         var currentHumidity = document.createElement('h6')
         currentHumidity.textContent = "Humidity: " + currentWeatherData.main.humidity + " %"
+
+        // Appends current weather data
         currentWeather.append(city, currentDate, currentIcon, currentTemp, currentWind, currentHumidity)
   })
 
@@ -53,9 +57,11 @@ function getWeather() {
         var weatherDiv = document.createElement('div')
         weatherDiv.setAttribute('class', 'card')
         var weatherCardBody = document.createElement('div');
-        weatherCardBody.setAttribute('class', 'card-body bg-info-subtle')
+        weatherCardBody.setAttribute('class', 'card-body text-bg-dark bg-gradient rounded-3 p-3 m-2')
+        // border border-primary-subtle
         
-        // Creating elements for weather data
+        
+        // Creating elements for forecast data
         var weatherDate = document.createElement('h5')
         weatherDate.setAttribute('class', 'card-title')
         var icon = document.createElement('img')
