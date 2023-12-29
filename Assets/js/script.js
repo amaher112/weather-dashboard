@@ -1,13 +1,48 @@
 var APIKey = "6c8259ad3f096de657ba0edf2d1ec551";
-var city = document.getElementById("city");
+var cityInput = document.getElementById("city");
 var cardGroup = document.querySelector('.card-group');
 var currentWeather = document.querySelector('.current-weather');
-var pastCities = ['']
 
-function getWeather() {
+
+function getSearchHistory() {
+  var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+  console.log("Search History:", searchHistory);
+
+   // Display the search history on the page
+   displaySearchHistory();
+
+}
+getSearchHistory();
+
+function displaySearchHistory(searchHistory) {
+  var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+  var searchHistoryList = document.getElementById("past-city");
+  // Clear previous entries
+  searchHistoryList.innerHTML = "";
+
+
+  // Loop through the search history and create list items with event listeners
+  for (var i = 0; i < searchHistory.length; i++) {
+    var listItem = document.createElement("li");
+    listItem.textContent = searchHistory[i];
+    // Attach a click event listener to each list item
+    listItem.addEventListener("click", function () {
+      // Fetch and display weather data for the clicked city
+      var cityInput = this.textContent
+      getWeather(cityInput);
+      console.log(cityInput)
+      
+    });
+
+    searchHistoryList.append(listItem);
+  }
+
+}
+
+
+function getWeather(cityInput) {
   cardGroup.textContent = '';
-  var cityInput = city.value;
-  localStorage.setItem('savedCities', cityInput);
+  // var cityInput = cityInput.value;
   
 
    // Function to get coordinates
@@ -79,26 +114,31 @@ function getWeather() {
         weatherDiv.append(weatherCardBody)
         cardGroup.append(weatherDiv)
       }
-       
-    // First one in array is current weather
-    // For local storage, key will be the city and value will be an object with all the weather data
-    // Rigth col will have two rows
-    // left column has search
-      
-    // Create a key of saved cities 
-    // Can loop through array of cities
-    // event listener can be 'get weather'
 
      })
      
    });
+   saveCity(cityInput);
+   getSearchHistory();
 
 }
+
+function saveCity() {
+  var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+  var cityInput = city.value;
+
+  if (!searchHistory.includes(cityInput)) {
+    searchHistory.push(cityInput);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    displaySearchHistory();
+}
+
+}
+
 
 function findFirstForecast(singleWeatherData) {
   var hour = singleWeatherData.dt_txt.split(' ')
   return hour[1] == '12:00:00'
-  
 }
 
   var submitBtn = document.getElementById("submit");
