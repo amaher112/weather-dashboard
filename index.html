@@ -11,32 +11,34 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <header id="header" class="text-bg-success bg-gradient p-3">Weather Dashboard</header>
-    <!-- <div class="container"> -->
-      <div class="row">
-        <aside class="vstack gap-2 col-1 p-5">
-          <h1>Search for a City:</h1>
+    <header id="header" class="text-bg-primary bg-gradient p-3">
+      Weather Dashboard
+    </header>
+
+    <div class="container-fluid">
+      <div class="row align-items-start">
+        <aside class="search col-1 vstack gap-2 p-5">
+          <h2>Search for a City:</h2>
           <input type="text" id="city" placeholder="Enter city" />
           <button type="submit" id="submit" class="btn btn-primary">
             Search
           </button>
         </aside>
-        <div class="col current-weather"></div>
-          
+        <section class="current-weather col border"></section>
       </div>
-    <!-- </div> -->
+    </div>
 
     <!-- <div class="container">
       <div class="row"> -->
-        <aside class="col">
-          <ul id="past-city"></ul>
-        </aside>
-      <!-- </div>
+    <aside class="col">
+      <ul id="past-city"></ul>
+    </aside>
+    <!-- </div>
     </div> -->
-    <div class="card-group col"></div>
- 
-
-
+    <div>
+      <h3 class="forecast-text">5-Day Forecast</h3>
+      <div class="card-group col"></div>
+  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script

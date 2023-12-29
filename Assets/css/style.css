@@ -1,8 +1,28 @@
-
-
 #header {
     text-align: center;
     font-size: 40px;
     font-weight: 600;
 }
 
+.search {
+    width: 30%;
+}
+
+.current-weather {
+    
+    border-color: var(--border-primary);
+    background-color: var(--bs-primary-bg-subtle);
+ 
+}
+
+#past-city li {
+    border: 1px solid black;
+    display: block;
+    margin: 5px;
+    width: 10%;
+}
+
+.forecast-text {
+    display: flex;
+    justify-content: center;
+}
