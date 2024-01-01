@@ -31,22 +31,22 @@ function displaySearchHistory(searchHistory) {
       var cityInput = this.textContent
       getWeather(cityInput);
       console.log(cityInput)
-      
+    
     });
-
+    if (searchHistory[i] != "") {
     searchHistoryList.append(listItem);
-  }
+     } }
 
 }
 
 
-function getWeather(cityInput) {
+function getWeather() {
   cardGroup.textContent = '';
-  // var cityInput = cityInput.value;
+  var cityName = cityInput.value;
   
 
    // Function to get coordinates
-   fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + cityInput + "&limit=1&appid=" + APIKey)
+   fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=" + APIKey)
    .then((response) => response.json())
    .then((data) => {
      var lat = data[0].lat;
@@ -118,21 +118,21 @@ function getWeather(cityInput) {
      })
      
    });
-   saveCity(cityInput);
+   saveCity();
    getSearchHistory();
 
 }
 
 function saveCity() {
   var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-  var cityInput = city.value;
+  var cityName = cityInput.value;
 
-  if (!searchHistory.includes(cityInput)) {
-    searchHistory.push(cityInput);
+  if (!searchHistory.includes(cityName)) {
+    searchHistory.push(cityName);
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
     displaySearchHistory();
 }
-
+console.log(cityName)
 }
 
 
