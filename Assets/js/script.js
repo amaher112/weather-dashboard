@@ -40,9 +40,9 @@ function displaySearchHistory(searchHistory) {
 }
 
 
-function getWeather() {
+function getWeather(cityName) {
   cardGroup.textContent = '';
-  var cityName = cityInput.value;
+  
   
 
    // Function to get coordinates
@@ -142,5 +142,8 @@ function findFirstForecast(singleWeatherData) {
 }
 
   var submitBtn = document.getElementById("submit");
-submitBtn.addEventListener('click', getWeather)
+submitBtn.addEventListener('click', function(){
+  var cityName = cityInput.value
+  getWeather(cityName)
+})
 
