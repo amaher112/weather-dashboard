@@ -43,8 +43,6 @@ function displaySearchHistory(searchHistory) {
 function getWeather(cityName) {
   cardGroup.textContent = '';
   
-  
-
    // Function to get coordinates
    fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=1&appid=" + APIKey)
    .then((response) => response.json())
@@ -93,7 +91,6 @@ function getWeather(cityName) {
         weatherDiv.setAttribute('class', 'card')
         var weatherCardBody = document.createElement('div');
         weatherCardBody.setAttribute('class', 'card-body text-bg-dark bg-gradient rounded-3 p-3 m-2')
-        // border border-primary-subtle
         
         
         // Creating elements for forecast data
@@ -135,7 +132,7 @@ function saveCity() {
 console.log(cityName)
 }
 
-
+// Function to find the first forecast at noon
 function findFirstForecast(singleWeatherData) {
   var hour = singleWeatherData.dt_txt.split(' ')
   return hour[1] == '12:00:00'
